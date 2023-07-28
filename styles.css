@@ -1,0 +1,132 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+}
+/* Forms */
+.form {
+  width: clamp(320px, 30%, 430px);
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  border-radius: 0.35rem;
+  padding: 1.5rem;
+}
+.text-center {
+  text-align: center;
+  margin-bottom: 10px;
+}
+input {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+}
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.input-group {
+  margin: 2rem 0;
+}
+.width-50 {
+  width: 50%;
+}
+.ml-auto {
+  margin-left: auto;
+}
+
+/* Buttons */
+.btn {
+  padding: 0.5rem;
+  display: block;
+  text-decoration: none;
+  background: rgb(11, 78, 179);
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  transition: 0.3s;
+}
+.btn:hover {
+  box-shadow: 0 0 0 2px #fff, 0 0 0 3px rgb(11, 78, 179);
+}
+.btns-group {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+.form-step {
+  display: none;
+  transform-origin: top;
+  animation: animate 0.5s;
+}
+.form-step-active {
+  display: block;
+}
+@keyframes animate {
+  from {
+    transform: scale(1, 0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1, 1);
+    opacity: 1;
+  }
+}
+
+/* Progressbar */
+.progressbar {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem 0 4rem;
+  counter-reset: step;
+}
+.progressbar::before,
+.progress {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 4px;
+  width: 100%;
+  background-color: #dcdcdc;
+}
+.progress {
+  background-color: rgb(11, 78, 179);
+  width: 0%;
+  transition: 0.2s;
+}
+
+.progress-steps {
+  width: 2.1875rem;
+  height: 2.1875rem;
+  background-color: #dcdcdc;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+.progress-steps::before {
+  counter-increment: step;
+  content: counter(step);
+}
+
+.progress-steps::after {
+  content: attr(data-title);
+  position: absolute;
+  top: 120%;
+  font-size: 0.85rem;
+  color: #666;
+}
+.progress-step-active {
+  background-color: rgb(11, 78, 179);
+  color: #fff;
+}
